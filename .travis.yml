@@ -1,0 +1,38 @@
+language: java
+
+jdk:
+ - oraclejdk8
+ 
+addons:
+ apt:
+  packages:
+   - oracle-java8-installer
+   
+# add this if you want to be notified about successfull/failed builds to your mail.
+notifications:
+ email:
+  - abinash9318@gmail.com
+  
+
+sudo: false # faster builds
+
+install:
+ - pip install --user html2text
+ 
+# add this if you use maven for your project and want to verify mvn build is successful and all unit tests pass.
+#script:
+# - mvn clean install -DskipTests=false cobertura:cobertura jxr:jxr surefire-report:report-only
+
+script: "mvn cobertura:cobertura"
+
+#after_script:
+# see surfire report (tests overview)
+#- python html2text.py D:/java-maven-junit-helloworld/target/surefire-reports/*html
+#- python html2text.py D:/java-maven-junit-helloworld/target/surefire-reports/*
+#- python html2text.py D:/java-maven-junit-helloworld/target/surefire-reports/surefire-report.html
+#- python html2text.py D:/java-maven-junit-helloworld/target/surefire-reports/surefire-report.html
+#- python html2text.py D:/java-maven-junit-helloworld/target/surefire-reports/surefire-report.html
+
+# reporting the coverage report to codecov
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
