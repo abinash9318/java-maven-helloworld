@@ -2,6 +2,8 @@ coverage:
   precision: 2
   round: nearest
   range: "40...70"
+  codecov:
+    token: 3c6bfd1e-3515-485d-bb51-79d11b3ece0b
   ignore: 
      - "src/main/java/com/example/javamavenjunithelloworld/Hello.java"
      - "src/main/java/com/example/javamavenjunithelloworld/HelloApp.java"
